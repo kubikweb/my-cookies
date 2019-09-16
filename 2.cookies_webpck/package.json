@@ -1,0 +1,32 @@
+{
+  "name": "cookies_w",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "nodemon --watch webpack.config.js --exec \"webpack\"",
+    "prebuild": "npm run clean",
+    "build": "webpack -p",
+    "clean": "rimraf dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "webpack": "^3.12.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015": "^6.24.1",
+    "css-loader": "^3.2.0",
+    "glob": "^7.1.4",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "nodemon": "^1.19.2",
+    "rimraf": "^3.0.0",
+    "style-loader": "^1.0.0"
+  }
+}

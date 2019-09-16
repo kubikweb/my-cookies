@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
         let date = new Date();
         date.setTime(date.getTime() + (hours*60*60*1000));
         let expires = date.toUTCString();
-        document.cookie = name + "="+ value + "; expires=" + expires + "; path=/";
+        document.cookie = name + "="+ value + "; expires=" + expires;
     };
 
     buttons.forEach(button => {

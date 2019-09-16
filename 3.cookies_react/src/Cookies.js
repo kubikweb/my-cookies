@@ -23,7 +23,7 @@ const Cookies =() => {
         const value = e.target.className;
         let date = new Date();
         date.setTime(date.getTime() + (24*60*60*1000));
-        setCookie("GDPR", value, {path: "/", expires: date } );
+        setCookie("GDPR", value, { expires: date } );
         setBgBox(false);
         setBox(false);
         setScroll(null);

@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon --watch webpack.config.js --exec \"webpack\"",
     "prebuild": "npm run clean",
-    "build": "webpack -p",
+    "build": "webpack -p --watch=false",
     "clean": "rimraf dist"
   },
   "keywords": [],

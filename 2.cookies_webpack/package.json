@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "src/main.js",
+  "homepage": ".",
   "scripts": {
     "start": "webpack --watch --mode development",
     "prebuild": "npm run clean",

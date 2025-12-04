@@ -1,52 +1,46 @@
 const path = require("path");
-const glob = require("glob");
-const HtmlPlugin = require("html-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
     entry: "./src/main.js",
     output: {
         filename: "bundle.js",
         path: path.resolve(__dirname, "dist"),
+        clean: true,
     },
-    watch: false,
-    // devtool: "source-map",
     module: {
         rules: [
             {
                 test: /\.js$/,
+                exclude: /node_modules/,
                 use: {
                     loader: "babel-loader",
                     options: {
-                        presets: ["env"]
+                        presets: ["@babel/preset-env"]
                     }
                 }
             },
             {
                 test: /\.css$/,
-                use: ["style-loader", {
-                    loader: "css-loader",
-                    // options: {
-                    //     sourceMap: true,
-                    // }
-                }]
+                use: ["style-loader", "css-loader"]
             },
             {
                 test: /\.html$/,
-                use: [
-                    {
-                        loader: "html-loader",
-                    }
-                ]
+                use: ["html-loader"]
             },
-
         ]
     },
     plugins: [
-        new HtmlPlugin({
+        new HtmlWebpackPlugin({
             filename: "index.html",
             template: "./src/index.html"
-
         }),
-    ]
-
+    ],
+    devServer: {
+        static: {
+            directory: path.join(__dirname, 'dist'),
+        },
+        port: 8080,
+        open: true,
+    }
 };

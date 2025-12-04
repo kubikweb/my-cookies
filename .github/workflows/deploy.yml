@@ -22,12 +22,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Check changed files
-        id: changes
-        run: |
-          echo "webpack_changed=$(git diff --name-only HEAD^ HEAD | grep '^2.cookies_webpack/' || echo 'false')" >> $GITHUB_OUTPUT
-          echo "react_changed=$(git diff --name-only HEAD^ HEAD | grep '^3.cookies_react/' || echo 'false')" >> $GITHUB_OUTPUT
-
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -38,14 +32,12 @@ jobs:
             3.cookies_react/package-lock.json
 
       - name: Build Webpack version
-        if: steps.changes.outputs.webpack_changed != 'false' || github.event_name == 'workflow_dispatch'
         working-directory: ./2.cookies_webpack
         run: |
           npm ci
           npm run build
 
       - name: Build React version
-        if: steps.changes.outputs.react_changed != 'false' || github.event_name == 'workflow_dispatch'
         working-directory: ./3.cookies_react
         run: |
           npm ci
@@ -54,7 +46,9 @@ jobs:
       - name: Prepare deployment folder
         run: |
           mkdir -p _site
+
           cp index.html _site/
+
           cp -r 1.cookies-js/src _site/vanilla-js
 
           mkdir -p _site/webpack

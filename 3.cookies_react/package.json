@@ -1,13 +1,12 @@
 {
-  "homepage": "http://kubikweb.usermd.net/cookies-react",
   "name": "cookies_react",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "react": "^16.9.0",
+    "react": "^19.2.1",
     "react-cookie": "^4.0.1",
-    "react-dom": "^16.9.0",
-    "react-scripts": "3.1.1"
+    "react-dom": "^19.2.1",
+    "react-scripts": "^5.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
